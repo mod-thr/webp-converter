@@ -15,6 +15,15 @@ if (!flags.dir) {
     process.kill()
 }
 
+if (!fs.existsSync(dir)) {
+    console.log('--dir directory not exists')
+    process.kill()
+}
+
+if (flags.dest && !fs.existsSync(flags.dest)) {
+    fs.mkdirSync(flags.dest)
+}
+
 if (flags.resolution) {
     const d = flags.resolution.split('*')
     flags.width = d[0]
