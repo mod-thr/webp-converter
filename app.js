@@ -10,6 +10,11 @@ const flags = Parse(process.argv)
 const dir = flags.dir || process.cwd()
 const files = fs.readdirSync(dir)
 
+if (!flags.dir) {
+    console.log('--dir flag is required')
+    process.kill()
+}
+
 if (flags.resolution) {
     const d = flags.resolution.split('*')
     flags.width = d[0]
@@ -36,7 +41,7 @@ for (const file of files) {
                 width: flags.width || dimensions.width || 1000,
                 height: flags.height || dimensions.height || 1000,
                 fit: flags.fit || 'cover',
-                position: flags.position || 'center'
+                position: 'center'
             }).webp({
                 quality: flags.quality || 85
             }).toFile(dest)
