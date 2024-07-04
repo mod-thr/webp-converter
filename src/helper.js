@@ -15,14 +15,14 @@ export const getPercentage = (total, current) => {
 
 export const getPercentageDifference = (largeFileSize, smallFileSize) => {
     if (largeFileSize === 0) {
-        return "Cannot calculate percentage difference when large file size is zero.";
+        return 0
     }
-    const difference = largeFileSize - smallFileSize;
+    const difference = largeFileSize - smallFileSize
 
-    return (difference / largeFileSize) * 100;
+    return (difference / largeFileSize) * 100
 }
 
 export const formatFileSize = (size) => {
-    const i = size === 0 ? 0 : Math.floor(Math.log(size) / Math.log(1024));
-    return (size / Math.pow(1024, i)).toFixed(2) + ' ' + ['B', 'kB', 'MB', 'GB', 'TB'][i];
+    const i = size === 0 ? 0 : Math.floor(Math.log(size) / Math.log(1024))
+    return (size / Math.pow(1024, i)).toFixed(2) + ' ' + ['B', 'kB', 'MB', 'GB', 'TB'][i]
 }
